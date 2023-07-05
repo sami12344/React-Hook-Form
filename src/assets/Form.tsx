@@ -13,25 +13,26 @@ type FormValues = {
 
 let renderCount = 0
 const Form = () => {
- const form = useForm<FormValues>()
- const {register,control,handleSubmit} = form
-renderCount++
-const onSubmit = (data: FormValues) => {
-  console.log('Form is submitted', data)
-}
+  const form = useForm<FormValues>()
+  //  const {register,control,handleSubmit} = form
+   const {register,handleSubmit} = form
+  renderCount++
+  const onSubmit = (data: FormValues) => {
+    console.log('Form is submitted', data)
+  }
   return (
     <div>
-      <h1>Form {renderCount/2}</h1>
+      <h1>Form {renderCount / 2}</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} >
-       <label htmlFor="username">Username</label>
-       <input type="text" id="username" {...register('username')}/>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor='username'>Username</label>
+        <input type='text' id='username' {...register('username')} />
 
-       <label htmlFor="email">email</label>
-       <input type="email"  id="email" {...register('email')}/>
-       <label htmlFor="channel">Channel</label>
-       <input type="text"  id="channel" {...register('channel')} />
-       <button>Submit</button>
+        <label htmlFor='email'>email</label>
+        <input type='email' id='email' {...register('email')} />
+        <label htmlFor='channel'>Channel</label>
+        <input type='text' id='channel' {...register('channel')} />
+        <button>Submit</button>
       </form>
       {/* <DevTool/> */}
     </div>
