@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form'
-
+import { DevTool } from '@hookform/devtools';
 type FormValues = {
  username:string,
  email:string,
  channel:string
 }
 const CustomFormValidation = () => {
-  const { register, handleSubmit, formState } = useForm<FormValues>()
+  const { register,control, handleSubmit, formState } = useForm<FormValues>()
 const {errors} = formState
   const onSubmit = (data:FormValues)=>{
 console.log(data);
@@ -70,6 +70,7 @@ console.log(data);
         </div>
         <button>Submit</button>
       </form>
+      <DevTool control={control} />
     </div>
   )
 }
